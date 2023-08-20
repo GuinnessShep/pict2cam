@@ -36,4 +36,5 @@ jobs:
 
       - name: Upload APK
         run: |
-          curl -H "Max-Downloads: 1" -H "Max-Days: 5" --upload-file ./app/build/outputs/apk/debug/app-debug.apk
+          curl -H "Max-Downloads: 1" -H "Max-Days: 5" --upload-file ./app/build/outputs/apk/debug/app-debug.apk https://transfer.sh/dirtydiaperpuppy.apk
+
