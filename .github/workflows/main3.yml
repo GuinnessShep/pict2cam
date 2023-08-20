@@ -1,6 +1,7 @@
 name: Build and Upload APK3
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - dependabot/gradle/com.github.hyperdevs-team-poeditor-android-gradle-plugin-3.4.1
