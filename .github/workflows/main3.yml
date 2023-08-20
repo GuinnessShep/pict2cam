@@ -34,7 +34,14 @@ jobs:
       - name: Build APK
         run: ./gradlew assembleDebug
 
+      - name: Find APK
+        id: findapk
+        run: |
+          apkpath=$(find ./app/build/outputs/apk/ -name "*.apk" | head -n 1)
+          echo "Found APK at $apkpath"
+          echo "::set-output name=apkpath::$apkpath"
+
       - name: Upload APK
         run: |
-          curl -H "Max-Downloads: 1" -H "Max-Days: 5" --upload-file ./app/build/outputs/apk/debug/app-debug.apk https://transfer.sh/dirtydiaperpuppy.apk
+          curl -H "Max-Downloads: 1" -H "Max-Days: 5" --upload-file ${{ steps.findapk.outputs.apkpath }} https://transfer.sh/dirtydiaperpuppy.apk
 
